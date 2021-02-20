@@ -14,7 +14,19 @@
         <!-- 마크업 - DOM View  -->
         <div id="app">
             <h1>자바스크립트 프레임 워크 Vue.js 공부하기 </h1>
-            <h2> 뷰 데이터 속성 바인딩 하기 {{ msg }} 머스테시(콧수염모양) 안에 바인딩 속성 넣기</h2>
+
+            <!-- 
+                    v-on:click='(메서드)함수호출'   //  '@'로 대체 하여 활용 가능
+                    v-on: 디렉티브                  //  ':'로 대체 하여 활용 가능
+                    v-bind: 속성지정
+
+                    h2를 클릭하면 msg 데이터 속성을 변경하는 이벤트 실행  
+                    v-on:click='(메서드)함수 호출' 메소드 mFn 호출하여
+                    msg  속성 값을 VUE.JS로 바인딩한다.
+            -->
+            <!-- 
+            <h2 v-on:click='mFn'> 뷰 데이터 속성 바인딩 하기 {{ msg }} 머스테시(콧수염모양) 안에 바인딩 속성 넣기</h2> -->
+            <h2 @click='mFn'> 뷰 데이터 속성 바인딩 하기 {{ msg }} 머스테시(콧수염모양) 안에 바인딩 속성 넣기</h2>
             <p>{{ txt }}</p>
             <hr>
         </div>
@@ -28,13 +40,23 @@
                 data: {
                     msg: '자바스크립트 data',
                     txt: 'JAVASCRIPT VUE.JS'
+                },
+                methods: {
+                    mFn: function () { // 메소드(리터럴 함수)
+                        var that = this; // 'that' 오브젝트를 생성하여 해당 오브젝트에 변수를 넣어 활용할 수 도 있다.
+
+                        alert('메소드 호출 실행');
+                        this.msg = 'Vue.JS' // msg 속성 변경
+                        // 메소드 함수 내에서는 속성 값 대인 연산자는 콜론(:)이 아닌 등호(=) 사용
+                        this.txt = '더조은아카데미_수업중'
+                    }
                 }
             });
         </script>
 
         <div id="header">
             <h1>MVVM 모델링</h1>
-            <h2>{{ msg }}</h2>
+            <h2 v-on:click='ggagga'>{{ msg }}</h2>
             <p>{{ babo }}</p>
             <hr>
         </div>
@@ -55,10 +77,40 @@
                 data: function () { // 메소드 방식은 반드시 return { 속성(property) : 속성 값(Value) }, ECMA 6
                     return {
                         msg: 'MVVM 패턴',
-                        babo: 50000
+                        babo: 500000
+                    }
+                },
+                methods: {
+                    ggagga: function () {
+                        this.msg = '대한민국 만세';
+                        this.babo = 1000000;
                     }
                 }
             });
+        </script>
+        <div id="main">
+            <h1>테스트</h1>
+            <h2 @click="TotalPay"> {{ msg }}</h2>
+            <p>{{ Tuna }}</p>
+        </div>
+        <script>
+            var mainObj = new Vue({
+                el: '#main',
+                data: function () {
+                    return {
+                        msg: '이춘복',
+                        Tuna: '참치'
+                    }
+                },
+                methods: {
+                    TotalPay: function () {
+                        alert("잘먹었습니다.")
+                        this.msg = "총 금액은 300,000";
+                        this.Tuna = "계산서는 당신의 것 ★"
+                    }
+                }
+            });
+
         </script>
         <style>
             #wrap {
