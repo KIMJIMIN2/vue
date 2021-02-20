@@ -1,3 +1,6 @@
+# 현재폴더
+$pwd
+
 # 초기 설정
 git init
 
@@ -12,22 +15,6 @@ $ pwd
 
 USER@DESKTOP-BN44M5N MINGW64 ~
 $ cd C:/Users/USER/OneDrive/바탕 화면/공부/github/vue
-bash: cd: too many arguments
-
-USER@DESKTOP-BN44M5N MINGW64 ~
-$ cd OneDrive/
-
-USER@DESKTOP-BN44M5N MINGW64 ~/OneDrive
-$ cd 바탕\ 화면/
-
-USER@DESKTOP-BN44M5N MINGW64 ~/OneDrive/바탕 화면
-$ cd 공부/
-
-USER@DESKTOP-BN44M5N MINGW64 ~/OneDrive/바탕 화면/공부
-$ cd github/
-
-USER@DESKTOP-BN44M5N MINGW64 ~/OneDrive/바탕 화면/공부/github
-$ cd vue/
 
 USER@DESKTOP-BN44M5N MINGW64 ~/OneDrive/바탕 화면/공부/github/vue
 $ git init
