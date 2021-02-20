@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    script[src=./vue/lib/vue.js] // 젠코딩
+    <script src="./vue/lib/vue.js"></script>
+</head>
+
+<body>
+    <h1></h1>
+
+    div>ul>li*6 // 자동완성 부모 자식구조 태그
+    <div>
+        <ul>
+            <li>목록 내용 입니다</li>
+            <li>목록 내용 입니다</li>
+            <li>목록 내용 입니다</li>
+            <li>목록 내용 입니다</li>
+            <li>목록 내용 입니다</li>
+            <li>목록 내용 입니다</li>
+        </ul>
+    </div>
+
+    div>{lerem} // 자동완성 lerem 값을 입력한 div 태그
+    <div>lorem</div>
+    <div>텍스트 내용</div>
+
+    div+div+div // 자동완성 형제 구조 태그
+    <div></div>
+    <div></div>
+    <div></div>
+
+    div>ul>li*3^^div>ul>li*3 // 자동완성 "^^" : 2단계 위로
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    div#section>ul>li.slide.slide$*5 // # id, . class, $ 번호(갯수)
+    <div id="section">
+        <ul>
+            <li class="slide slide1"></li>
+            <li class="slide slide2"></li>
+            <li class="slide slide3"></li>
+            <li class="slide slide4"></li>
+            <li class="slide slide5"></li>
+        </ul>
+    </div>
+
+    div#gallery>ul>li*8.gallery-img>img[src=./img/imgage$$.jpg] // [] 속성
+    <div id="gallery">
+        <ul>
+            <li class="gallery-img"><img src="./img/imgage01.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage02.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage03.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage04.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage05.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage06.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage07.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage08.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    div#gallery>ul>li*8.gallery-img>img[src=./img/imgage$$@0.jpg] // 0부터 시작
+
+    <div id="gallery">
+        <ul>
+            <li class="gallery-img"><img src="./img/imgage00.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage01.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage02.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage03.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage04.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage05.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage06.jpg" alt=""></li>
+            <li class="gallery-img"><img src="./img/imgage07.jpg" alt=""></li>
+        </ul>
+    </div>
+    </div>
+</body>
+
+</html>
