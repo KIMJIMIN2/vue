@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=0, initial-scale=1.0">
+    <title>vue.js 처음 코딩하기</title>
+    <script src="./vue/lib/vue.js"></script>
+</head>
+
+<body>
+    <div id='wrap'>
+        <!-- 마크업 - DOM View  -->
+        <div id="app">
+            <h1>자바스크립트 프레임 워크 Vue.js 공부하기 </h1>
+            <h2> 뷰 데이터 속성 바인딩 하기 {{ msg }} 머스테시(콧수염모양) 안에 바인딩 속성 넣기</h2>
+            <p>{{ txt }}</p>
+            <hr>
+        </div>
+
+        뷰는 MVVM 모델 구조를 가짐(Model + View + View Model)
+        <!-- 스크립트 뷰 모델(View Model) + 모델(Model)-->
+        <script>
+            // 뷰 생성자
+            var obj = new Vue({
+                el: '#app', // 엘리먼트 루트에 DOM('#app', ID)을 연결            
+                data: {
+                    msg: '자바스크립트 data',
+                    txt: 'JAVASCRIPT VUE.JS'
+                }
+            });
+        </script>
+
+        <div id="header">
+            <h1>MVVM 모델링</h1>
+            <h2>{{ msg }}</h2>
+            <p>{{ babo }}</p>
+            <hr>
+        </div>
+        <!-- <script>
+            var headerObj = new Vue({
+                el: '#header',
+                data: function () { // 메소드 방식은 반드시 return { 속성(property) : 속성 값(Value) }, ECMA 5
+                    return {
+                        msg: 'MVVM 패턴',
+                        babo: 50000
+                    }
+                }
+            });
+        </script> -->
+        <script>
+            var headerObj = new Vue({
+                el: '#header',
+                data: function () { // 메소드 방식은 반드시 return { 속성(property) : 속성 값(Value) }, ECMA 6
+                    return {
+                        msg: 'MVVM 패턴',
+                        babo: 50000
+                    }
+                }
+            });
+        </script>
+        <style>
+            #wrap {
+                width: 1000px;
+                margin: 0 auto;
+                background-color: #f0f0f0;
+                padding: 100px 0;
+            }
+
+            #app {
+                text-align: center;
+            }
+
+            #header {
+                text-align: center;
+            }
+
+            h2,
+            p {
+                color: #39b;
+                background: #ddd;
+                display: inline-flex;
+                padding: 10px 20px;
+                font-size: 30px;
+                font-weight: normal;
+            }
+        </style>
+    </div>
+</body>
+
+</html>
