@@ -6,10 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>뷰 인스턴스 만들기 & 자바스크립트 클래스(객체와 함수)</title>
+    <style>
+        table {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        table td,
+        th {
+            border: 1px solid#ccc;
+            height: 45px;
+            text-align: center;
+        }
+
+        table#table td:nth-child(2) {
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
     <h1>리터럴 방식 클래스 인스턴스 만들기</h1>
+    <h2>주소부</h2>
+    <table id='table'></table>
+    <br>
+    <hr><br>
+    <table id='score'>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>국어</th>
+            <th>영어</th>
+            <th>수학</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </table>
+    <br>
+    <hr><br>
+    <table id='tuna'>
+        <tr>
+            <th>부위</th>
+            <th>평점</th>
+        </tr>
+    </table>
     <script>
 
         /* 
@@ -109,6 +154,32 @@
                 console.log('총점 : ' + tot); // ECMA SCRIPT 5[ES5]
                 console.log(`총점 : ${tot}`); // ECMA SCRIPT 6[ES6]
 
+                // 주소부 템플릿에 출력
+                // 반복문 이용
+                var txt = ''; // 출력 내용 보관하는 변수
+                var $table = document.querySelector('#table'); // 선택자
+
+                txt = '<tr><th>이름</th><th>주소</th></tr>' // 제목 1회 출력
+
+                // 5회 반복처리
+                this.main.address.forEach(function (el, index, arr) {
+                    txt += '<tr><td>' + el.이름 + '</td><td>' + el.주소 + '</td></tr>' // 5회 반복 출력
+                    console.log("배열처리", el, index, arr);
+                }); // 자바스크립트 객체 배열 처리, forEach(엘리먼트 태그, 인덱스, 배열)
+
+                $table.innerHTML = txt; // 테이블에 데이터 출력
+
+                var txt2 = '';
+                var $score = document.querySelector("#score");
+
+                txt2 = '<tr><th>번호</th><th>이름</th><th>국어</th><th>영어</th><th>수학</th></tr>';
+                this.main.student.forEach(function (el, index, arr) { // 성적 처리
+                    txt2 += '<tr><td>' + el.번호 + '</td><td>' + el.이름 + '</td><td>' + el.kor + '</td><td>' + el.eng + '</td><td>' + el.math + '</td></tr>';
+                    console.log('=======test======')
+                });
+
+
+                $score.innerHTML = txt2;
 
             },
             run: function () { // 인스턴스 전체 실행 메소드
@@ -172,13 +243,13 @@
             data: {
                 arr1: [
                     {
-                        부위: '대뱃살', 평점: '5.0 만점'
+                        부위: '대뱃살', 평점: '5.0 / 5.0 만점'
                     },
                     {
-                        부위: '중뱃살', 평점: '5.0 만점'
+                        부위: '중뱃살', 평점: '5.0 / 5.0 만점'
                     },
                     {
-                        부위: '소뱃살', 평점: '5.0 만점'
+                        부위: '소뱃살', 평점: '5.0 / 5.0 만점'
                     }
                 ]
             },
@@ -186,6 +257,16 @@
                 console.log(this.data);
                 console.log(this.b);
                 console.log("참치는 부위와 상관없이 다 맛있지")
+
+                var text3 = '';
+                var $tuna = document.querySelector("#tuna");
+
+                txt3 = '<tr><th>부위</th><th>평점</th></tr>';
+                this.data.arr1.forEach(function (el, index, arr) {
+                    txt3 += '<tr><td>' + el.부위 + '</td><td>' + el.평점 + '</td></tr>';
+                });
+
+                $tuna.innerHTML = txt3;
             }
         }
         test.init();

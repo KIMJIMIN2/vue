@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 v-for 반복문</title>
+    <!-- 오픈소스 -->
+    <script src="./vue/lib/vue.js"></script>
+    <style>
+        table {
+            width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse
+        }
+
+        table th {
+            background: #f0f0f0;
+        }
+
+        table td,
+        th {
+            border: 1px solid#ccc;
+            text-align: center;
+            height: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HTML -->
+    <div id="app" align="center">
+        <h1>지인 연락처</h1>
+        <table>
+            <tr>
+                <th>이름</td>
+                <th>휴대폰단축번호</td>
+            </tr>
+            <!-- <tr v-for='el in 안에 반복할 속성 addr'> -->
+            <tr v-for='el in addr'>
+                <td>{{ el.이름 }}</td>
+                <td>{{ el.휴대폰단축번호 }}</td>
+            </tr>
+        </table>
+    </div>
+    <!-- Vue.js -->
+
+    <script>
+        var obj = new Vue({
+            el: '#app', // Root
+            data: {
+                addr: [
+                    {
+                        이름: '일순신', 휴대폰단축번호: '1'
+                    }, {
+                        이름: '이순신', 휴대폰단축번호: '2'
+                    }, {
+                        이름: '삼순신', 휴대폰단축번호: '3'
+                    }, {
+                        이름: '사순신', 휴대폰단축번호: '4'
+                    }, {
+                        이름: '오순신', 휴대폰단축번호: '5'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>
