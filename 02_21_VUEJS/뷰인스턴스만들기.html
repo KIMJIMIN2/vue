@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 인스턴스 만들기 & 자바스크립트 클래스(객체와 함수)</title>
+</head>
+
+<body>
+    <h1>리터럴 방식 클래스 인스턴스 만들기</h1>
+    <script>
+
+        /* 
+            var app = {}; // 리터럴 방식
+            var app = new Object(); // 생성자 방식
+            var app = []; // 리터럴 방식
+            var app = new Array(); // 생성자 방식 배열 객체
+        */
+
+        var vue = {
+            cnt: 0, // 프로퍼티(멤버변수)
+            el: '<h1>프로퍼티(멤버변수) 탬플릿</h1>',
+            method: ['피자', '닭 칼국수', '김밥', '라면', '토마토 스파게티'],
+            main: {
+                student: [
+                    {
+                        번호: 1,
+                        이름: '일순신',
+                        kor: 100,
+                        eng: 90,
+                        math: 95
+                    },
+                    {
+                        번호: 2,
+                        이름: '이순신',
+                        kor: 099,
+                        eng: 080,
+                        math: 025
+                    },
+                    {
+                        번호: 3,
+                        이름: '삼순신',
+                        kor: 088,
+                        eng: 070,
+                        math: 035
+                    },
+                    {
+                        번호: 4,
+                        이름: '사순신',
+                        kor: 077,
+                        eng: 060,
+                        math: 035
+                    },
+                    {
+                        번호: 5,
+                        이름: '오순신',
+                        kor: 066,
+                        eng: 050,
+                        math: 045
+                    }
+                ],
+                address: [{
+                    이름: '일순신', 주소: '서울시 서초구 서초1동'
+                },
+                {
+                    이름: '이순신', 주소: '서울시 서초구 서초2동'
+                },
+                {
+                    이름: '삼순신', 주소: '서울시 서초구 서초3동'
+                },
+                {
+                    이름: '사순신', 주소: '서울시 서초구 서초4동'
+                },
+                {
+                    이름: '오순신', 주소: '서울시 서초구 서초5동'
+                }
+                ]
+            },
+            init: function () { // 메소드(멤버함수)
+                // this 인스턴스(객체)
+                this.cnt = 500;
+                this.el += '<h2>프로퍼티(멤버변수)에 내용 추가</h2>'
+                console.log(this.cnt);
+                console.log(this.el);
+            },
+            compute: function () {
+
+                // 성적표
+                console.log(this.method);
+                console.log(this.method[0]);
+                console.log(this.method[1]);
+                console.log(this.method[2]);
+                console.log(this.method[3]);
+                console.log(this.method[4]);
+
+                // 주소부
+                console.log(this.main.address[3].이름);
+                console.log(this.main.address[3].주소);
+
+
+                console.log(this.main);
+                console.log(this.main.student);
+                console.log(this.main.student[3]);
+                console.log(this.main.student[3].이름);
+                console.log(this.main.student[3].eng);
+                var tot = this.main.student[3].kor + this.main.student[3].eng + this.main.student[3].math;
+                console.log('총점 : ' + tot); // ECMA SCRIPT 5[ES5]
+                console.log(`총점 : ${tot}`); // ECMA SCRIPT 6[ES6]
+
+
+            },
+            run: function () { // 인스턴스 전체 실행 메소드
+                this.init();
+                this.compute();
+            }
+        } // 인스턴스(객체) 끝
+
+        vue.init(); // vue 인스턴스 내부 init 메소드 실행
+        vue.compute(); // vue 인스턴스 내부 compute 메소드 실행
+
+        var objProject1 = {
+            a: 100,
+            el: 'Vue 프레임워크',
+            data: {
+                arr1: [
+                    {
+                        이름: '일순신', kor: 100, eng: 070, math: 065
+                    },
+                    {
+                        이름: '이순신', kor: 100, eng: 070, math: 066
+                    },
+                    {
+                        이름: '삼순신', kor: 100, eng: 070, math: 067
+                    },
+                    {
+                        이름: '사순신', kor: 100, eng: 070, math: 065
+                    },
+                    {
+                        이름: '오순신', kor: 100, eng: 070, math: 064
+                    }
+                ]
+            },
+            method1: function () {
+                this.a = 5000000;
+                console.log(this.a);
+            },
+            method2: function () {
+                this.el += '자바스크립트 라이브러리'
+                console.log(this.el);
+            },
+            method3: function () {
+                console.log(this.data);
+            },
+            init: function () {
+                this.method1();
+                this.method2();
+            }
+        };
+        objProject1.init();
+
+        // 인스턴스 생성
+        // 프로퍼티: 값
+        // 프로퍼티 : 배열 
+        // 메소드 만들어서 프로퍼티 값을 변환하거나 출력
+        // 인스턴스 전체 메소드 init
+
+        var test = {
+            a: 300,
+            b: '이춘복',
+            data: {
+                arr1: [
+                    {
+                        부위: '대뱃살', 평점: '5.0 만점'
+                    },
+                    {
+                        부위: '중뱃살', 평점: '5.0 만점'
+                    },
+                    {
+                        부위: '소뱃살', 평점: '5.0 만점'
+                    }
+                ]
+            },
+            init: function () {
+                console.log(this.data);
+                console.log(this.b);
+                console.log("참치는 부위와 상관없이 다 맛있지")
+            }
+        }
+        test.init();
+
+    </script>
+</body>
+
+</html>
