@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <child-component v-bind:props 속성이름="상위 컴포넌트의 data 속성"></child-component>-->
+        <child-component v-bind:propsdata="message"></child-component>
+    </div>
+    <!-- <script src="./vue/lib/vue.js"></script>  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+        Vue.component('child-component', {
+            props: ['propsdata'],
+            template: '<p>{{ propsdata }}</p>',
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue! passed from Parent Component'
+            }
+        });
+    </script>
+
+
+    <!-- <script>
+        Vue.component('child-component', {
+            props: ['propsdata'],
+            template: '<p>{{ propsdata }}</p>',
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue! passed from Parent Component'
+            }
+        });
+    </script> -->
+</body>
+
+</html>
