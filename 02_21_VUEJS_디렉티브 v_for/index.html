@@ -25,6 +25,10 @@
             text-align: center;
             height: 45px;
         }
+
+        #main {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -43,8 +47,23 @@
                 <td>{{ el.휴대폰단축번호 }}</td>
             </tr>
         </table>
+
     </div>
     <!-- Vue.js -->
+    <div id="main">
+        <h1>지인 연락처</h1>
+        <!-- <main-component></main-component> -->
+        <!-- 실제 존재하지 않는 태그 명이지만, 사용자가 임의로 입력한 태그로 '컴퍼넌트'라고 불리운다-->
+        <h1>새로운 영역 생성</h1>
+        <ol>
+            <li>내용1</li>
+            <li>내용2</li>
+            <li>내용3</li>
+            <li>내용4</li>
+            <li>내용5</li>
+        </ol>
+    </div>
+
 
     <script>
         var obj = new Vue({
@@ -63,6 +82,29 @@
                         이름: '오순신', 휴대폰단축번호: '5'
                     }
                 ]
+            }
+        });
+        // var main = new Vue({
+        //     el: "#main",
+        //     data: {
+        //         no: 0
+        //     },
+        //     components: {
+        //         'main-component': {
+        //             template: '<h1>컴퍼넌트를 생성하고 템플릿트 추가</h1>'
+        //         }
+        //     }, methods: {
+
+        //     }, created: {
+
+        //     }, beforeUpdate: {
+
+        //     }
+        // })
+        var main = new Vue({ // 또 다른 뷰 생성(인스턴스 생성)
+            el: "#main", // Root
+            data: { // Root data 속성
+                no: 0
             }
         });
     </script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 v-for 반복문</title>
+    <!-- 오픈소스 -->
+    <script src="./vue/lib/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- html 요소 영역-->
+    <div id="header">
+        <h1>헤더 영역의 뷰 라이프 사이클 </h1>
+        <h2> 머스테시 표시안에 데이터 속성(멤버 변수)에 출력 {{ msg }}</h2>
+        <p v-on:mouseenter='product'>제품 가격은 {{ num }} 입니다 </p>
+        <p v-on:click='product'>제품 가격은 {{ num }} 입니다 </p>
+        <p @click='price'> 'v-on:' 디렉티브를 '@'로 대체사용. 제품 가격은 {{ num }} 입니다 </p>
+
+    </div>
+    <div id="tuna">
+        <p>{{ num }}, {{ msg }}</p>
+        <p v-on:click='plus'>제품 가격이 올라갑니다</p>
+        <p v-on:click='minus'>제품 가격이 내려갑니다</p>
+    </div>
+
+    <!-- 스크립트 영역-->
+    <script>
+        const header = new Vue({
+            el: '#header',
+            data: {
+                msg: "뷰 인스턴스 데이터 메세지",
+                num: 590
+            },
+            methods: { // 메소드 관리해주는 속성
+                // 메소드 리터럴 함수
+                product: function () {
+                    let that = this;
+                    // this.num = 100; // header.num=100;   과 동일한 표현
+                    that.num += 100
+                    this.msg = '데이터 메시지 수정';
+                },
+                price: function () {
+                    this.num = 100000;
+                }
+            }
+        });
+        function product3() {
+            alert("함수 실행");
+        }
+
+        const header3 = new Vue({
+            el: "#tuna",
+            data: {
+                msg: "동원참치",
+                num: 500
+            },
+            methods: {
+                plus: function () {
+                    let that = this;
+                    this.num += 100;
+                    this.msg = '사조참치';
+                },
+                minus: function () {
+                    let that = this;
+                    this.num -= 100;
+                    this.msg = '동원참치';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
