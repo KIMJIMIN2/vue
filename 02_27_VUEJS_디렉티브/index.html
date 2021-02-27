@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue/lib/vue.js"></script>
+    <!--하위 버전과의 호환을 목적으로 가급적 Stable한 버전(1.12.4) 활용한다.-->
+    <script src="./vue/js/jquery.min.js"></script>
+    <style></style>
+</head>
+<!-- 
+     헤딩은 data에 정의된 멤버변수를 활용한다. 
+     웹 문서에 고객 이름을 순서있는 목록에 반복 출력합니다.
+     그리고 데이터는 뷰의 data 속성에 객체 배열(list)로 데이터를 활용한다. 
+-->
+
+<body>
+    <div id="member">
+        <h1>{{ title }} </h1>
+        <ul>
+            <li v-for='(el,index) in memberlist'>{{ index +1 }}. 고객 이름 : {{ el.이름 }} 전화 : {{ el. 전화 }} </li>
+        </ul>
+    </div>
+    <script>
+        const member = new Vue({
+            el: "#member",
+            data: {
+                title: '정기 고객 리스트',
+                memberlist: [
+                    { 이름: '일순신', 전화: '010-7432-3214' },
+                    { 이름: '이순신', 전화: '010-2222-3211' },
+                    { 이름: '삼순신', 전화: '010-3333-3211' },
+                    { 이름: '사순신', 전화: '010-4444-3212' },
+                    { 이름: '오순신', 전화: '010-5555-3212' },
+                    { 이름: '육순신', 전화: '010-6666-3212' },
+                    { 이름: '칠순신', 전화: '010-7777-3212' },
+                    { 이름: '팔순신', 전화: '010-8888-3212' },
+                    { 이름: '구순신', 전화: '010-9999-3212' },
+                    { 이름: '십순신', 전화: '010-0000-3212' }
+                ]
+            }
+
+        });
+    </script>
+</body>
+
+</html>
