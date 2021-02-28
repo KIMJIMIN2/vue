@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+        #wrapper {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #wrapper #header h1 {
+            color: #000;
+        }
+
+        #wrapper #header h2 {
+            color: #279;
+        }
+
+        #wrapper #header h2 mark {
+            background: #cf5
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- HTML 영역-->
+        <div id="header">
+            <h1>{{ msg }}</h1>
+            <!-- 상위 컴퍼넌트에서 하위 컴퍼넌트에게 통신은 Properties(속성) props 이용하여 전달 -->
+            <!-- 하위 컴퍼넌트에서 상위 컴퍼넌트에게 통신은 Event(이벤트) $emit 이용하여 전달 -->
+            <!--가상 요소(JSX) 컴퍼넌트 이름, 가급적 영어로, 숫자는 가장 뒤에 붙여 쓸수 있다.-->
+            <nav-component v-bind:txtbind='txt'></nav-component>
+        </div>
+        <h1 data-teme='gallery'></h1>
+        <!-- 스크립트 영역-->
+        <script>
+            // 전역 컴포넌트 생성, Vue.component('컴퍼넌트이름',{})
+            Vue.component('nav-component', {
+                props: ['txtbind'], // 바인딩(v-bind:속성이름)할 속성 지정
+                template: '<h2><mark><em>전역컴포넌트 템플릿 속성 {{ txtbind }}</em></mark></h2>'
+            });
+
+
+            // 뷰 인스턴스 생성
+            var header = new Vue({
+                el: '#header',
+                data: { // ECMA 6
+                    msg: '전역컴포넌트 생성',
+                    txt: '**상위컴퍼넌트에서 하위 컴퍼넌트로 통신 성공**'
+                }
+                // data(){ // ECMA 5 
+                //     return{
+                //         msg:'전역 component'
+                //     }
+                // }
+            });
+
+
+        </script>
+    </div>
+</body>
+
+</html>

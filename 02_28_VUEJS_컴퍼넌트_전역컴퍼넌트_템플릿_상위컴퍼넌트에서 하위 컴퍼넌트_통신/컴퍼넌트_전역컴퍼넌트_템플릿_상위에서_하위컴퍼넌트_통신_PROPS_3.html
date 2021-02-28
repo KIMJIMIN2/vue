@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+        #wrapper {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #wrapper #main h1 {
+            color: #000;
+            padding: 50px 0;
+            font-size: 40px color:#379;
+        }
+
+        #wrapper #main .button-box {
+            color: #279;
+            padding: 50px 0;
+        }
+
+        #wrapper #main .button-box button {
+            cursor: pointer;
+            background: #333;
+            color: #eee;
+            font-size: 20px;
+            width: 200px;
+            height: 100px;
+        }
+
+        #wrapper #main .button-box button:hover {
+            background: #000;
+        }
+
+        #wrapper #main .button-box button:active {
+            background: rgb(235, 185, 185);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- HTML 영역-->
+        <div id="main">
+            <div class="button-box">
+                <!-- <babo-component v-bind:속성이름=''></babo-component> -->
+                <button v-on:click='countFn'>클릭하세요</button>
+                <babo-component v-bind:count='num'></babo-component>
+            </div>
+        </div>
+    </div>
+    <!-- 스크립트 영역-->
+    <script>
+        // 전역 컴퍼넌트
+        Vue.component('babo-component', {
+            props: ['count'],
+            template: '<p> {{ count }} </p>' // 하위 컴퍼넌트 props의 속성 'count' 로 전달 받음
+        });
+
+        // 뷰 인스턴스 생성 
+        var main = new Vue({
+            el: "#main",
+            data: {
+                num: 0 // 루트의 num 값이 하위 컴퍼넌트에 전달(통신)됨.
+            },
+            methods: {
+                countFn: function () {
+                    // var that = this.num;
+                    this.num++;
+
+                }
+            }
+        });
+    </script>
+
+    </div>
+</body>
+
+</html>
