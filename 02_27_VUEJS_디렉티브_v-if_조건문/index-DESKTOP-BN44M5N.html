@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 v-for 반복문 & v-on:이벤트 @click 뷰 라이프 사이클 & 제이쿼리 사용</title>
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+
+    <style>
+        #app {
+            text-align: center;
+        }
+
+        #app h3:nth-of-type(3) img {
+            width: 200px;
+        }
+
+        #app h3:nth-of-type(4) img {
+            width: 400px;
+        }
+
+<<<<<<< HEAD
+        #fruit {
+            padding: 10px 30px;
+        }
+=======
+        #app h3:nth-of-type(5) img {
+            width: 400px;
+        }
+
+        #fruit {
+            padding: 10px 30px;
+        }
+
+        #idirum {
+            width: 200px;
+            height: 50px;
+            border: 1px solid #ccc;
+            background: #f6f6f6;
+            padding: 7px 15px;
+        }
+
+        #idirum::placeholder {
+            color: #aaa;
+        }
+>>>>>>> 3272edd6af1d4226d94a88360a361ba8da0c424b
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <h1> a의 값(Value) : {{ a }} / b의 값(Value) : {{ b }} </h1>
+        <h2 v-if='a'> 조건문(v-if)이 참(True)인 경우 </h2>
+        <h2 v-if='b'> 조건문(v-if)이 거짓(False)인 경우 </h2>
+        <h3><a v-bind:href='url1' v-bind:title='title1'> jquery 사이트 가기 </a></h3>
+        <h3><a v-bind:href='url2' v-bind:title='title2'> vue.js 사이트 가기 </a></h3>
+        <h3><img v-bind:src='imgurl1' v-bind:alt='imgalt1' v-bind:title='imgTitle1'></h3>
+        <h3><img v-bind:src='imgurl2' v-bind:alt='imgalt2' v-bind:title='imgTitle1'></h3>
+<<<<<<< HEAD
+        <hr>
+        <h2>오늘의 날짜는 : {{ nowDate }} </h2>
+        <h2>오늘의 날짜는 : {{ nowDate.getFullYear() }} - {{ nowDate.getMonth()+1 }} - {{ nowDate.getDay() }}</h2>
+
+        <hr>
+        <h2> 셀렉트 박스 옵션 선택</h2>
+=======
+        <h3><img :src='imgurl2' :alt='imgalt2' :title='imgTitle1'></h3>
+        <hr>
+        <h2>오늘의 날짜는 : {{ nowDate }} </h2>
+        <h2>오늘의 날짜는 : {{ nowDate.getFullYear() }} - {{ nowDate.getMonth()+1 }} - {{ nowDate.getDate() }} {{
+            nowDate.getDay() }}</h2>
+
+        <hr>
+        <h2> 셀렉트 박스 옵션 선택 v-model </h2>
+>>>>>>> 3272edd6af1d4226d94a88360a361ba8da0c424b
+        <select name="fruit" id="fruit" v-model='select'>
+            <option value="">좋아하는 과일을 선택하세요!</option>
+            <option value="딸기">딸기</option>
+            <option value="사과">사과</option>
+            <option value="바나나">바나나</option>
+            <option value="자몽">자몽</option>
+        </select>
+        <h3> 선택 옵션은 : {{ select }}</h3>
+<<<<<<< HEAD
+        <hr>
+        <h2> 체크박스 v-model</h2>
+        <div class="check-box">
+            <input type="checkbox" name="chk1" id="chk1" value="운동"><label for="chk1">운동</label>
+            <input type="checkbox" name="chk2" id="chk2" value="등산"><label for="chk2">등산</label>
+            <input type="checkbox" name="chk3" id="chk3" value="야구"><label for="chk3">야구</label>
+            <input type="checkbox" name="chk4" id="chk4" value="축구"><label for="chk4">축구</label>
+=======
+
+        <hr>
+        <h2> 체크박스 v-model </h2>
+        <div class="check-box">
+            <input type="checkbox" name="chk1" id="idchk1" value="운동" v-model='chk'><label for="idchk1">운동</label>
+            <input type="checkbox" name="chk2" id="idchk2" value="등산" v-model='chk'><label for="idchk2">등산</label>
+            <input type="checkbox" name="chk3" id="idchk3" value="캘리그라피" v-model='chk'><label for="idchk3">캘리그라피</label>
+            <input type="checkbox" name="chk4" id="idchk4" value="골프" v-model='chk'><label for="idchk4">골프</label>
+        </div>
+        <H2> 취미 생활 항목 : {{ chk }}</H2>
+
+        <hr>
+        <h2> 라디오버튼 v-model </h2>
+        <div class="radio-box">
+            <input type="radio" name="chk" id="chk1" value="여성" v-model='gender'><label for="chk1">여성</label>
+            <input type="radio" name="chk" id="chk2" value="남성" v-model='gender'><label for="chk2">남성</label>
+            <input type="radio" name="chk" id="chk3" value="중성" v-model='gender'><label for="chk3">중성</label>
+        </div>
+        <H2> 선택 항목 : {{ gender }}</H2>
+        <hr>
+        <h2> 라디오버튼 v-if ~ v-else-if ~ v-else</h2>
+        <div class="if box">
+            <ol>
+                <li v-if='cho1'>자장면</li>
+                <li v-else-if='cho2'>탕수육</li>
+                <li v-else>팔보채</li>
+            </ol>
+        </div>
+        <hr>
+        <h2>입력 상자 텍스트를 이용한 응용 v-model</h2>
+        <div class="text-box">
+            <label for="idirum">회원 이름</label>
+            <input type="text" name="irum" id="idirum" v-model='value' v-on:keyup="eventFn">
+            <h2>{{ value }}</h2>
+            <h3 v-show='x'>회원 이름을 입력하세요</h3>
+>>>>>>> 3272edd6af1d4226d94a88360a361ba8da0c424b
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+
+    <script>
+        const obj = new Vue({
+            el: '#app',
+            data: {
+                a: true,
+                b: false,
+                url1: 'https://jquery.com/',
+                url2: 'https://vuejs.org/',
+                imgurl1: './img/logo.png',
+<<<<<<< HEAD
+                imgurl2: './tuna.png',
+=======
+                imgurl2: './img/berries-1546125_1920.jpg',
+>>>>>>> 3272edd6af1d4226d94a88360a361ba8da0c424b
+                imgalt1: '달달한 딸기 이미지',
+                imgalt2: 'VUE 로고 이미지',
+                title1: 'jquery 사이트 가기',
+                title2: 'vue.js 사이트 가기',
+                imgTitle1: '달달한 딸기',
+                imgTitle1: 'VUE 로고',
+                nowDate: new Date(),
+<<<<<<< HEAD
+                select: ''
+=======
+                select: '',
+                chk: [],       //선택사항(체크박스 항목) 배열지정
+                gender: '',
+                cho1: false,
+                cho2: true,
+                value: '',
+                x: true
+            },
+            methods: {
+                eventFn: function () { // 키보드가 입력이 되고 올라오면(keyup)
+                    this.x = false
+                }
+>>>>>>> 3272edd6af1d4226d94a88360a361ba8da0c424b
+            }
+        });
+    </script>
+
+</body>
+
+</html>
