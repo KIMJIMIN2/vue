@@ -72,6 +72,11 @@
                     countFn: function () {
                         this.num += 100000;
                     }
+                },
+                wathch: {  // 감시자
+                    num: function () {
+                        console.log('데이터 변환', this.num);
+                    }
                 }
             });
 

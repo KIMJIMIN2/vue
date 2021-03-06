@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+#wrap {width:100%;}
+#wrap #header {z-index:3;position:fixed;top:0;width:100%;height:75px;border-bottom:1px solid rgba(255,255,255, .1);}
+#wrap #header .wrap {width:100%;max-width:1170px;margin:0 auto;}
+#wrap #header .wrap .gap {margin:0 15px;}
+#wrap #header .wrap .gap .container {width:100%;}
+#wrap #header .wrap .gap .container::after {content:'';display:block;clear:both;}
+
+/* logo */
+#wrap #header .wrap .gap .container .logo {float:left;line-height:75px;}
+#wrap #header .wrap .gap .container .logo a {display:inline-block;line-height:100%;}
+#wrap #header .wrap .gap .container .logo a img {width:155px;}
+
+/* NAV */
+#wrap #header .wrap .gap .container #nav {float:right;}
+#wrap #header .wrap .gap .container #nav ul {line-height:75px;}
+#wrap #header .wrap .gap .container #nav ul li {display:inline-block;margin:0 30px;}
+#wrap #header .wrap .gap .container #nav ul li a {color:#fff;font-weight:500;font-size:15px;}
+
+
+
+#wrap #main {z-index:2;position:relative;width:100%;}
+#wrap #main #section1 {width:100%;height:969px;background:url(../img/main_image.jpg) no-repeat 50% 50%;background-size:cover;}
+#wrap #main #section1 .wrap {width:100%;max-width:1170px;margin:0 auto;height:100%;}
+#wrap #main #section1 .wrap .gap {position:relative;margin:0 15px;height:100%;}
+#wrap #main #section1 .wrap .gap .container {position:absolute;width:100%;text-align:center;top:50%;margin-top:-180px;}
+#wrap #main #section1 .wrap .gap .container h4 {font-size:13px;color:#fff;background:#2283d4;padding:7px 20px;display:inline-block;}
+#wrap #main #section1 .wrap .gap .container h2 {font-size:90px;color:#fff;font-weight:700;padding:20px 0;}
+#wrap #main #section1 .wrap .gap .container h3 {font-size:15px;color:#f0f0f0;font-weight:100;padding-bottom:50px;}
+#wrap #main #section1 .wrap .gap .container p {width:auto;}
+#wrap #main #section1 .wrap .gap .container p span {display:inline-block;}
+#wrap #main #section1 .wrap .gap .container p span a {display:block;line-height:42px;padding:0 40px;border:4px solid #fff;font-size:16px;font-weight:600;background:rgba(255,255,255, 0);transition:all .3s;color:#fff;}
+#wrap #main #section1 .wrap .gap .container p span a:hover {background:rgba(255,255,255, 1);color:#666;}
+
