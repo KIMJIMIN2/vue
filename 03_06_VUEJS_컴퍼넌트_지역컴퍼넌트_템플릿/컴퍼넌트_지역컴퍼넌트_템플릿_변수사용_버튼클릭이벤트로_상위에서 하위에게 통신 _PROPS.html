@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+
+    <style>
+        #wrapper {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #wrapper #main h1 {
+            color: #000;
+            padding: 50px 0;
+            font-size: 40px color:#379;
+        }
+
+        #wrapper #main .button-box {
+            color: #279;
+            padding: 50px 0;
+        }
+
+        #wrapper #main .button-box button {
+            cursor: pointer;
+            background: #333;
+            color: #eee;
+            font-size: 20px;
+            width: 200px;
+            height: 100px;
+        }
+
+        #wrapper #main .button-box button:hover {
+            background: #000;
+        }
+
+        #wrapper #main .button-box button:active {
+            background: rgb(235, 185, 185);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="app">
+            <h1> 버튼 클릭 이벤트로 상위 컴퍼넌트에서 하위 컴퍼넌트로의 통신 : PROPS 사용 합니다.</h1>
+            <button v-on:Click='countFn'>클릭이벤트</button>
+            <app-comp v-bind:propsdata='num'></app-comp>
+        </div>
+        <script>
+            var appComp = {
+                props: ['propsdata'],
+                template: '<h2>지역컴포넌트 템플릿 내용 {{ propsdata }}</h2>'
+            }
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    num: 100000
+                },
+                components: {
+                    'app-comp': appComp
+                },
+                methods: {
+                    countFn: function () {
+                        this.num += 100000;
+                    }
+                }
+            });
+
+        </script>
+    </div>
+</body>
+
+</html>
