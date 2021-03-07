@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콤퍼넌트_전역콤퍼넌트_템플릿</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+
+
+
+</head>
+
+<body>
+    <div id="wrap">
+
+
+
+        <!-- 헤더영역 시작 -->
+
+        <div id="header">
+            <div class="wrap">
+                <div class="gap">
+                    <div class="container">
+
+                        <!-- logo template  -->
+                        <logo-component v-for='item in imglogo' v-bind:propslogo="item"></logo-component>
+
+                        <!-- Navigation template -->
+                        <nav id="nav">
+                            <ul>
+                                <nav-component v-for='item in gnb' v-bind:propsNav='item'></nav-component>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            var logoComponent = {
+                props: ['propslogo'], // 무조건 속성명은 소문자
+                template: '\
+                <div class="logo">\
+                    <a href="javascript:" class="logo-btn">\
+                        <img v-bind:src="propslogo.img" alt="logo">\
+                    </a>\
+                </div>\
+                '
+            }
+
+            var navComponent = {
+                props: ['propsnav'], // 무조건 속성명은 소문자
+                template: '\
+                 <li><a href="javascript:" class="main-btn">{{ propsnav.menu }}</a></li>\
+            '
+            }
+
+            var header = new Vue({
+                el: '#header',
+                data: {
+                    imglogo: [
+                        { img: './img/logo_image.png' }
+                    ],
+                    gnb: [
+                        { menu: 'ABOUT' },
+                        { menu: 'PORTFOLIO' },
+                        { menu: 'SERVICES' },
+                        { menu: 'PORTFOLIO' },
+                        { menu: 'ABOUT' },
+                        { menu: 'PORTFOLIO' }
+                    ]
+                },
+                components: {
+                    'logo-component': logoComponent,
+                    'nav-component': navComponent
+                }
+
+            });
+
+        </script>
+
+        <!-- 헤더영역 끝 -->
+
+
+
+
+
+
+
+        <!-- 메인영역 시작 -->
+
+        <div id="main">
+            <section1-component v-on:emitevent='updateFileData'></section1-component>
+        </div>
+
+
+        <script>
+
+            var section1Component = {
+                props: ['propsSec1'],
+                template: '\
+                <section id="section1">\
+                    <div class="wrap">\
+                        <div class="gap">\
+                            <div class="container">\
+                                <h4>WE WORK HARD, WE PLAY HARD</h4>\
+                                <h2>\
+                                    SALIENT IS DIGITAL<br>\
+                                    BRILLIANCE\
+                                </h2>\
+                                <h3>CREATIVE SOLUTIONS TO IMPROVE YOUR BUSINESS</h3>\
+                                <p>\
+                                    <span><a href="javascript:" v-on:click="popup(\'./popup/main1.html\',\'아규먼트(Argument)\')">OUR SERVICES</a></span>\
+                                </p>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </section>\
+                ',
+                methods: {
+                    popup: function (z, y) {
+                        this.$emit('emitevent'); // 에밋 메소드 실행 이벤트 생성, 가급적 모두 소문자로...... 대문자 인식 안되는 경우가 많다
+
+                        // 1. 하위 컴퍼넌트에서 이벤트를 발생시켜
+                        // 2. 상위 컴퍼넌트에 이벤트로 전달할 이벤트 이름(emitevent)을 생성(에밋 $emit 이라는 메소드로 이벤트를 생성)한다. 
+                        // 3-1. 생성된 이벤트 이름을 상위 컴퍼넌트의 데이터 속성을 할당하고 활성화 한다.
+                        //      예] v-on:하위컴퍼넌트에서 생성된 에밋이름='상위 컴퍼넌트의 데이터 변경을 위해 메소드 함수(updateFiledata)를 호출한다.
+                        //      예] v-on:emitevent='updateFileData'
+                        // 3-2. 상위 컴퍼넌트의 메소드스(methods) 속성을 이용, 호출할 메소드 함수를 만든다.
+                        //      메소드 함수 변경 내용은 함수 호출시 100씩 증가하는 구문이다.
+                        //      예]this.filedata += 100;
+
+                        // 상위 컴퍼넌트에 데이터 속성 중 filedata의 값을 100씩 증가한다
+                        // 그리고 증가된(변경된) 값을 다시 내려받아서(props) 팝업 파일명을 
+                        // 증가시켜 다른 팝업 파일을 띄운다.
+                        // window.open(z);  // 새창
+                        //   location.href = z;  // 본인 창에서 이동
+                    }
+                }
+            }
+
+            var main = new Vue({
+                el: '#main',
+                data: {
+                    filedata: 0
+                },
+                components: {
+                    'section1-component': section1Component
+                },
+                methods: {
+                    updateFileData: function () {
+                        this.filedata += 100;   // main.filedata +=100;을 의미
+
+                    }
+                }
+
+            });
+
+        </script>
+
+        <!-- 메인영역 끝 -->
+
+
+
+
+    </div>
+</body>
+
+</html>
