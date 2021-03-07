@@ -102,14 +102,14 @@
         <!-- 메인영역 시작 -->
 
         <div id="main">
-            <section1-component v-on:emitevent='updateFileData'></section1-component>
+            <section1-component v-on:emitevent='updateFileData' v-bind:propssec1="filedata"></section1-component>
         </div>
 
 
         <script>
 
             var section1Component = {
-                props: ['propsSec1'],
+                props: ['propssec1'],
                 template: '\
                 <section id="section1">\
                     <div class="wrap">\
@@ -122,7 +122,7 @@
                                 </h2>\
                                 <h3>CREATIVE SOLUTIONS TO IMPROVE YOUR BUSINESS</h3>\
                                 <p>\
-                                    <span><a href="javascript:" v-on:click="popup(\'./popup/main1.html\',\'아규먼트(Argument)\')">OUR SERVICES</a></span>\
+                                    <span><a href="javascript:" v-on:click="popup(\'./popup/main\'+propssec1+\'.html\',\'Window Popup\'+ propssec1+\'\')">OUR SERVICES</a></span>\
                                 </p>\
                             </div>\
                         </div>\
@@ -130,22 +130,37 @@
                 </section>\
                 ',
                 methods: {
-                    popup: function (z, y) {
+                    popup: function (y, z) {
                         this.$emit('emitevent'); // 에밋 메소드 실행 이벤트 생성, 가급적 모두 소문자로...... 대문자 인식 안되는 경우가 많다
 
+                        var url = y;
+                        var name = z;
+                        var option = "Window Popup 100, width=500, height=600, top=0, left=0"
+                        window.open(url, name, option);
+
+                        console.log(y, z);
                         // 1. 하위 컴퍼넌트에서 이벤트를 발생시켜
+
                         // 2. 상위 컴퍼넌트에 이벤트로 전달할 이벤트 이름(emitevent)을 생성(에밋 $emit 이라는 메소드로 이벤트를 생성)한다. 
+
                         // 3-1. 생성된 이벤트 이름을 상위 컴퍼넌트의 데이터 속성을 할당하고 활성화 한다.
                         //      예] v-on:하위컴퍼넌트에서 생성된 에밋이름='상위 컴퍼넌트의 데이터 변경을 위해 메소드 함수(updateFiledata)를 호출한다.
                         //      예] v-on:emitevent='updateFileData'
                         // 3-2. 상위 컴퍼넌트의 메소드스(methods) 속성을 이용, 호출할 메소드 함수를 만든다.
                         //      메소드 함수 변경 내용은 함수 호출시 100씩 증가하는 구문이다.
-                        //      예]this.filedata += 100;
+                        //      예] this.filedata += 100;
 
-                        // 상위 컴퍼넌트에 데이터 속성 중 filedata의 값을 100씩 증가한다
-                        // 그리고 증가된(변경된) 값을 다시 내려받아서(props) 팝업 파일명을 
-                        // 증가시켜 다른 팝업 파일을 띄운다.
-                        // window.open(z);  // 새창
+                        // 4. 상위 컴퍼넌트에 데이터 속성 중 filedata의 값을 100씩 증가(변경)된 값을 프롭스를 통해서 하위 컴퍼넌트에 값을 전달되게 한다. 
+
+                        // 5. 그리고 전달된 데이터 값을 템플릿에서 속성으로 받아서 변경된 파일명을
+
+                        // 6. 팝업창으로 띄운다. 
+                        //    단, 팝업창은 너비 500px, 높이 600px, 탑 0, 좌측에서 300 픽셀 이동 주소창(네비게이션) 안나오게하여 띄운다. 
+                        //    예] window.open("팝업파일경로/파일명.html", "팝업창이름","width=500, height=600, top=0, left=300, location=no");
+                        //    예] window.open("./popup/main100.html", "Window Popup 100, width=500, height=600, top=0, left=300, location=no");
+
+
+                        //   window.open(z);  // 새창
                         //   location.href = z;  // 본인 창에서 이동
                     }
                 }
