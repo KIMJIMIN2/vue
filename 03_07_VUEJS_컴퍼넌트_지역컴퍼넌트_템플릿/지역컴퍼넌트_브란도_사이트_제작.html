@@ -12,7 +12,7 @@
 
 
     <!-- 오픈소스  -->
-    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/js/jquery.min.js"></script>
     <script src="./vue/lib/vue.js"></script>
 
 
@@ -176,11 +176,61 @@
                 },
                 methods: {
                     updateFileData: function () {
-                        this.filedata += 100;   // main.filedata +=100;을 의미
+                        if (this.filedata > 300) {
+                            this.filedata = 0;
+                        } else {
+                            this.filedata += 100;   // main.filedata +=100;을 의미
+                        }
 
                     }
-                }
+                },
+                mounted: function () { // 화면이 모두 부착된(mount)된 상태로, jQuery 활용이 가능하다. 
 
+                    // 화면에 부착이 완료된 상태
+                    // 1. 창 너비(window.innerWidth)와 창 높이(window.innerheight)를 반응형에 적용
+                    //    그리고 섹션 1(#section)의 창높이와 창너비를 설정한다.
+                    //    단, 화면 크기가 변경시 즉시('resize' EventListener, 이벤트리스너) 반응하여 적용되도록 한다.
+
+                    function JavascriptFn() {
+                        var $section1 = document.querySelector("#section1")
+                        var $winH = window.innerHeight; // 창높이, 객체를 변수화할때는 '$'를 붙여주자.
+
+                        function resizeFn() {
+
+                            varsection1 = document.querySelector("#section1");
+                            var winH = window.innerHeight; // 창높이, 객체를 변수화할때는 '$'를 붙여주자.
+                            var sec1H = section1.style.height;
+
+                            $section1.style = 'height:' + $winH + 'px';
+                            // $section1.style.height = $winH + 'px';
+                            sec1H = section1.style.height; // 창높이
+
+                            // 높이의 변화를 콘솔 로그로 출력!!!
+                            console.log("window.innerHeight : " + $winH);
+                            console.log("section1의 높이는 : " + sec1H);
+                        }
+                        resizeFn(); // 마운트 완료 시 실행 1회 
+                        window.addEventListener("resize", resizeFn); // 창 크기 변경 시 즉각 반응하여 함수 호출 실행 하는 이벤트 리스너
+                    }
+
+                    function jQueryFn() {
+                        // 제이쿼리 
+                        alert('제이쿼리');
+                        console.log($);
+                        var section1 = $('#section1');
+                        var winH = $(window).innerHeight();
+
+                        function resizeFn() {
+                            winH = $(window).innerHeight();
+                            section1.css({ height: winH });
+                            console.log("section1 : " + section1.innerHeight());
+                        }
+                        $(window).resize(function () {
+                            resizeFn();
+                        }); // window.addEventListener와 동일
+                    }
+
+                }
             });
 
         </script>

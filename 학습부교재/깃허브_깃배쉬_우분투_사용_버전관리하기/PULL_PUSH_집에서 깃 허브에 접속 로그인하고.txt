@@ -1,0 +1,148 @@
+최초에는
+깃 환경설정
+폴더(리포지토리)만들고
+폴더(리포지토리)로 이동하고
+
+///////////////////////////////////////////////////////////
+git init
+
+git config user.email 'moonseonjong@naver.com'
+
+git config user.name 'moonjongjs'
+
+git remote add origin https://github.com/moonjongjs/vue.git
+
+////////////////////////////////////////////////////////////
+
+
+업로드
+///////////////////////////////////////////////////////////
+git add .
+
+git commit -m '업로드 또는 업데이드'
+
+git push origin master
+///////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+집에서 깃 허브에 접속 로그인하고
+리포지 토리의 주소(url)을 복사하여
+저장하고자 하는 위치에 복제를 실행
+
+git bash  
+다운로드(복제) 한다.
+git clone https://github.com/moonjongjs/vue.git
+
+
+집에서 깃 저장소인 리포지토리에 작업한 과제물 
+업로드
+
+git add .
+git commit -m '과제물 업로드'
+git push origin master
+
+
+학원 교실에 와서 작업시는 
+과제물을 내려 받고
+
+
+수업내용 중간 끝나고 
+업로드 한다.
+
+
+업로드 작업 못한다.
+
+
+왜?
+업데이트내용 변경(삭제,추가,수정)내용이 있을 때
+그럴때는 반드시 
+교실에서는 
+먼저 
+
+git pull origin master
+
+오늘 수업 내용 작업하고
+
+끝나고 
+마지막 시간에 
+
+git add  .
+git commit -m '2021-02-21 일요일 수업내요 vue 업데이트'
+git push origin master
+
+
+끝나고 
+
+Go Home
+
+집에서
+
+깃허브 폴더 안에
+
+cd d:/깃허브/vue
+
+git pull origin master
+
+수정 내용
+
+내려받고(Down Load)
+
+과제하고
+복습하고
+
+그리고 다시 변경(수정, 추가, 삭제) 내용을
+다시 깃허브에 업로드해서 최신 정보내용을 유지한다.
+
+버전관리라고 말한다.
+
+git add .
+git commit -m 'Home 업데이트'
+git push origin master
+
+다음 주 토요일날 와서 
+다시 
+내려받고 수업하고
+
+git pull origin master
+
+업로드한다.
+
+git add .
+git commit -m 'Study 업데이트'
+git push origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+D:/교사문선종/github/vue

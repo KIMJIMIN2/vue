@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콤퍼넌트_전역콤퍼넌트_템플릿</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+
+
+
+</head>
+
+<body>
+    <div id="wrap">
+
+
+
+        <!-- 헤더영역 시작 -->
+
+        <div id="header">
+            <div class="wrap">
+                <div class="gap">
+                    <div class="container">
+
+                        <!-- logo template  -->
+                        <logo-component></logo-component>
+
+                        <!-- Navigation template -->
+                        <nav id="nav">
+                            <ul>
+                                <nav-component v-for='item in gnb' v-bind:propsNav='item'></nav-component>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            var logoComponent = {
+                props: ['propslogo'], // 무조건 속성명은 소문자
+                template: '\
+                <div class="logo">\
+                    <a href="javascript:" class="logo-btn">\
+                        <img src="./img/logo_image.png" alt="logo">\
+                    </a>\
+                </div>\
+                '
+            }
+
+            var navComponent = {
+                props: ['propsnav'], // 무조건 속성명은 소문자
+                template: '\
+                 <li><a href="javascript:" class="main-btn">{{ propsnav.menu }}</a></li>\
+            '
+            }
+
+            var header = new Vue({
+                el: '#header',
+                data: {
+                    gnb: [
+                        { menu: 'ABOUT' },
+                        { menu: 'PORTFOLIO' },
+                        { menu: 'SERVICES' },
+                        { menu: 'PORTFOLIO' },
+                        { menu: 'ABOUT' },
+                        { menu: 'PORTFOLIO' }
+                    ]
+                },
+                components: {
+                    'logo-component': logoComponent,
+                    'nav-component': navComponent
+                }
+
+            });
+
+        </script>
+
+        <!-- 헤더영역 끝 -->
+
+
+
+
+
+
+
+        <!-- 메인영역 시작 -->
+
+        <div id="main">
+            <section1-component v-on:emitevent='updateFileData' v-bind:propsec1='filedata'></section1-component>
+        </div>
+
+
+        <script>
+
+            var section1Component = {
+                props: ['propssec1'],
+                template: '\
+                <section id="section1">\
+                    <div class="wrap">\
+                        <div class="gap">\
+                            <div class="container">\
+                                <h4>WE WORK HARD, WE PLAY HARD</h4>\
+                                <h2>\
+                                    SALIENT IS DIGITAL<br>\
+                                    BRILLIANCE\
+                                </h2>\
+                                <h3>CREATIVE SOLUTIONS TO IMPROVE YOUR BUSINESS</h3>\
+                                <p>\
+                                    <span><a href="javascript:" v-on:click="popup(\'./popup/main\'+propsec1+\'.html\',\'Window Popup\'+propssec1+\'\')">OUR SERVICES</a></span>\
+                                </p>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </section>\
+                ',
+                methods: {
+                    popup: function (y, z) {
+                        this.$emit('emitevent');
+
+                        var url = y;
+                        var name = z;
+                        var option = "Window Popup 100, width= 500, height=600, top=0, left=0";
+                        window.open(url, name, option);
+                        console.log(y, z);
+                    }
+                },
+            }
+
+            var main = new Vue({
+                el: '#main',
+                data: {
+                    filedata: 0
+                },
+                components: {
+                    'section1-component': section1Component
+                },
+                methods: {
+                    updateFileData: function () {
+                        if (this.filedata > 300) {
+                            this.filedata = 0;
+                        } else {
+                            this.filedata += 100;
+                        }
+                    }
+                },
+                mounted: function () {
+                }
+
+            });
+
+        </script>
+
+        <!-- 메인영역 끝 -->
+
+
+
+
+    </div>
+</body>
+
+</html>

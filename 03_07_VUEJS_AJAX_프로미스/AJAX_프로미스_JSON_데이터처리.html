@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX_프로미스_JSON_데이터처리</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <!-- 오픈소스  -->
+    <script src="./vue/js/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <h1>AJAX_프로미스_JSON_데이터처리</h1>
+
+        <script>
+            // fetch("./data/data1.json") // 프로미스 변환
+            //     .then((resp) =>  resp.json()) // 한줄로 사용 한 경우 리턴을 작성하지 않아도 무방합니다.
+            // 블록기호{}는 작성하지 않는다
+
+            fetch("./data/data1.json")
+                .then((resp) => { // 줄 바꿔서 표현한 경우 반드시 리턴(return)이 필요합니다.
+                    return resp.json() // 프로미스 변환
+                })
+                .then((babo) => {
+                    // console.log(data); // 객체(Object)
+                    babo.item.forEach(function (el, index) {
+                        // console.log(index + 1, el.name, el.age, el.email);
+                        console.log(index + 1, babo.item[index].name, babo.item[index].age, babo.item[index].email)
+                    })
+                })
+
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+D:\교사문선종\github\vue
+
+
+cd 경로 변경
+D:/교사문선종/github/vue
+
+
+//////////////////////////////////
+깃설정 [환경설정]
+/////////////////////////////////
+
+
+
+TJ@1304-▒▒▒▒ MINGW64 ~
+$ pwd
+/c/Users/TJ
+
+TJ@1304-▒▒▒▒ MINGW64 ~
+$ cd D:/교사문선종/github/vue
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue
+$ git init
+Initialized empty Git repository in D:/교사문선종/github/vue/.git/
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+$ ls
+02-20/
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+$ ls -la
+total 4
+drwxr-xr-x 1 TJ 197121 0 Feb 20 12:29 ./
+drwxr-xr-x 1 TJ 197121 0 Feb 20 12:08 ../
+drwxr-xr-x 1 TJ 197121 0 Feb 20 12:29 .git/
+drwxr-xr-x 1 TJ 197121 0 Feb 20 12:09 02-20/
+
+////////////////////////////////////////////////
+원격접속(리모트  remote) 필요한게 : 사용자이메일 과 사용자 이름
+////////////////////////////////////////////////
+사용자(user) 이메일 (email)
+$ git config user.email 'moonseonjong@naver.com'
+
+사용자(user) 이름  (name)
+$ git config user.name 'moonjongjs'
+
+//깃허브 리포지토리(저장소) 원격 추가(add) 접속
+
+$ git remote add origin https://github.com/moonjongjs/vue.git
+
+//확인
+$ git remote -v
+origin  https://github.com/moonjongjs/vue.git (fetch)
+origin  https://github.com/moonjongjs/vue.git (push)
+
+
+//파일 올리기 업로드(Upload) (Push)
+
+3-1 
+//////////////////////
+업로드할 파일 선택 한다.
+스테이징(올릴파일을 스테이징에 올린다.)
+git add .
+
+
+3-2
+/////////////////////
+커밋한다.(commit)
+검증 수정된거 삭제된거 추가된거 이런것들을 검증(검사)
+
+git commit -m '2021-02-20 VS CODE 젠코딩 공부한것'
+
+
+J@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+$ git commit -m '2021-02-20 VS Code 젠코딩'
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        02-20/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+
+
+3-3
+/////
+최종 업로드 Push하기
+
+git push origin master
+
+
+
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+$ ls -la
+total 4
+drwxr-xr-x 1 TJ 197121 0 Feb 20 12:29 ./
+drwxr-xr-x 1 TJ 197121 0 Feb 20 12:08 ../
+drwxr-xr-x 1 TJ 197121 0 Feb 20 12:48 .git/
+drwxr-xr-x 1 TJ 197121 0 Feb 20 12:09 02-20/
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+$ git add .
+warning: LF will be replaced by CRLF in 02-20/vue/lib/vue.js.
+The file will have its original line endings in your working directory
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+$ git commit -m 'Upload'
+[master (root-commit) 687daf9] Upload
+ 2 files changed, 12058 insertions(+)
+ create mode 100644 02-20/index.html
+ create mode 100644 02-20/vue/lib/vue.js
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+$ git push origin master
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), 88.92 KiB | 5.23 MiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/moonjongjs/vue.git
+ * [new branch]      master -> master
+
+TJ@1304-▒▒▒▒ MINGW64 /d/교사문선종/github/vue (master)
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
