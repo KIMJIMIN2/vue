@@ -1,0 +1,44 @@
+{
+    "member": [
+        {
+            "userId": "test",
+            "userPW": "test1234",
+            "email": "test1234@naver.com"
+        },
+        {
+            "userId": "test2",
+            "userPW": "test12342",
+            "email": "test12342@naver.com"
+        },
+        {
+            "userId": "test3",
+            "userPW": "test12343",
+            "email": "test12343@naver.com"
+        },
+        {
+            "userId": "test4",
+            "userPW": "test12344",
+            "email": "test12344@naver.com"
+        },
+        {
+            "userId": "test5",
+            "userPW": "test12345",
+            "email": "test12345@naver.com"
+        },
+        {
+            "userId": "test6",
+            "userPW": "test12346",
+            "email": "test12346@naver.com"
+        },
+        {
+            "userId": "test7",
+            "userPW": "test12347",
+            "email": "test12347@naver.com"
+        },
+        {
+            "userId": "test8",
+            "userPW": "test12348",
+            "email": "test12348@naver.com"
+        }
+    ]
+}

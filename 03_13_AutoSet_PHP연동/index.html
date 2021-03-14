@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX AXIOS 폼 데이터 전송</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./vue/lib/axios.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="formWrap">
+
+        <div id="app">
+            <h1>회원관리</h1>
+            <form name='memberForm' id='memberForm' method='post' action="./response.php">
+                <div class="form-box">
+                    <ul>
+                        <li>
+                            <div>
+                                <label for="userId">ID</label>
+                                <input type="text" name="userId" id="userId" v-model='userId' placeholder="아이디를 입력하세요!">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="userPw">Password</label>
+                                <input type="password" name="userPw" id="userPw" v-model="userPw"
+                                    placeholder="비밀번호를 입력하세요!">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="userEmail">Email</label>
+                                <input type="text" name="userEmail" id="userEmail" v-model="userEmail"
+                                    placeholder="이메일을 입력하세요!">
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="button-box">
+                        <input type="button" v-on:click.prevent='memberFn' value="전송(Submit)">
+                        <!-- <input type="submit" value="전송(Submit)"> -->
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+        <script>
+            var app = new Vue({
+                data: {
+                    arr: [],
+                    userId: '',
+                    userPw: '',
+                    userEmail: ''
+                },
+                methods: {
+                    memberFn: function () {
+                        var url = './response.php';
+                        var data = {
+                            userId: this.userid,
+                            userPw: this.userPw,
+                            userEmail: this.userEmail
+                        }
+
+                        // Axios는 폼데이터 객체를 생성하여 데이터를 전송해야 함
+                        var form = new FormData();
+                        form.append('userId', this.userId);
+                        form.append('userPw', this.userPw);
+                        form.append('userEmail', this.userEmail);
+
+                        axios.post(url, form)
+                            .then((response) => { // ajax 성공 메세지 
+                                this.arr = response.data;
+                                console.log(response);
+                            }).catch(function (error) { // 실패 메세지 
+                                console.log(error)
+                            })
+                    }
+                }
+            }).$mount('#app');
+        </script>
+
+    </div>
+</body>
+
+</html>

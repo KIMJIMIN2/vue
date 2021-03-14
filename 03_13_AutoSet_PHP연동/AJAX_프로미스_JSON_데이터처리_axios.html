@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX_프로미스_JSON_데이터처리_axios</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- 오픈소스  -->
+    <script src="./vue/js/jquery.min.js"></script>
+    <script src="./vue/lib/vue.js"></script>
+    <script src="./vue/lib/axios.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="app">
+            <h1>회원관리</h1>
+            <table class="member">
+                <tr>
+                    <th>번호</th>
+                    <th>ID</th>
+                    <th>PASSWORD</th>
+                    <th>EMAIL</th>
+                </tr>
+                <tr v-for='(row, idx) in arr'>
+                    <td>{{idx+1}}</td>
+                    <td>{{row.userId}}</td>
+                    <td>{{row.userPW}}</td>
+                    <td>{{row.email}}</td>
+                </tr>
+            </table>
+            <div class="button-wrap">
+                <button v-on:click.preventDefault='axiosJsonFn'>멤버출력</button>
+                <!--버튼을 눌렀을때 새로고침 되는것을 방지-->
+            </div>
+        </div>
+
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    arr: []
+                }, methods: {
+                    axiosJsonFn: function () {
+                        var url = './data/member.json';
+                        axios.get(url)
+                            .then((response) => {
+                                console.log(response);
+                                this.arr = response.data.member;
+
+                                response.data.member.forEach(function (row, idx, arr) {
+                                    // console.log(idx, response.data.member[idx].userId);
+                                    // console.log(idx, response.data.member[idx].userPW);
+                                    // console.log(idx, response.data.member[idx].email);
+
+                                    console.log(idx, row.userId, row.userPW, row.email);
+
+                                });
+                            }).then(function () {
+
+                            })
+                    }
+                }
+            });
+        </script>;
+    </div>
+</body>
+
+</html>

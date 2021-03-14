@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
 
+
     <!-- 오픈소스  -->
-    <script src="./vue/js/jquery.min.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
     <script src="./vue/lib/vue.js"></script>
     <script src="./vue/lib/axios.min.js"></script>
 
@@ -19,10 +20,44 @@
 </head>
 
 <body>
-    <div id="wrap">
+    <div id="formWrap">
+
         <div id="app">
-            <form name='memberForm' id='memberForm' method='post' action="response.php"></form>
+            <h1>회원관리</h1>
+            <form name='memberForm' id='memberForm' method='post' action="./response.php">
+                <div class="form-box">
+                    <ul>
+                        <li>
+                            <div>
+                                <label for="userId">ID</label>
+                                <input type="text" name="userId" id="userId" placeholder="아이디를 입력하세요!">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="userPw">Password</label>
+                                <input type="password" name="userPw" id="userPw" placeholder="비밀번호를 입력하세요!">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <label for="userEmail">Email</label>
+                                <input type="text" name="userEmail" id="userEmail" placeholder="이메일을 입력하세요!">
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="button-box">
+                        <!-- <input type="button" value="전송(Submit)"> -->
+                        <input type="submit" value="전송(Submit)">
+                    </div>
+
+                </div>
+            </form>
+
         </div>
+
+
     </div>
 </body>
 

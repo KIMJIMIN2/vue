@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VueRouter</title>
+
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/style.css">
+
+
+<!-- 오픈소스  -->
+<script src="./js/lib/jquery.min.js"></script>    
+<script src="./vue/lib/vue.js"></script>
+<script src="./vue/lib/vue-router.js"></script>
+
+</head>
+<body>
+<div id="routrWrap">
+
+    <div id="app">
+        
+        <div id="header">
+            <h1 class="logo">Vue Router</h1>
+            <nav class="nav">
+                <ul>
+                    <li>
+                        <router-link to='/home'>HOME</router-link>
+                        <div class="sub sub1">
+                            <ul class="gap">
+                                <li><a href="#">서브메뉴1</a></li>
+                                <li><a href="#">서브메뉴2</a></li>
+                                <li><a href="#">서브메뉴3</a></li>
+                                <li><a href="#">서브메뉴4</a></li>
+                                <li><a href="#">서브메뉴5</a></li>
+                                <li><a href="#">서브메뉴6</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><router-link to='/main'>MAIN</router-link></li>
+                </ul>                       
+            </nav>
+        </div>
+
+        <div id="content">
+            <router-view></router-view>   
+        </div>       
+    </div>
+    
+
+    <script>
+
+        var homeComponent = {
+            template:"\
+                <div id='home' class='comp'>\
+                    <h2>홈 인트로 페이지</h2>\
+                </div>\
+            "
+        }
+
+        var mainComponent = {
+            template:"\
+                <div  id='main' class='comp'>\
+                    <h2>메인 페이지</h2>\
+                </div>\
+            "
+        }
+
+
+
+        //라우터 객체 생성
+        var router = new VueRouter({
+            routes:[
+                {
+                    path:'/home',
+                    component:homeComponent
+                },
+                {
+                    path:'/main',
+                    component:mainComponent
+                }
+            ]
+        });
+
+
+        //뷰 객체 생성
+        var app = new Vue({
+            router:router,
+            data:{
+                msg:'페이지이동'
+            }
+        }).$mount('#app');
+
+    </script>
+
+</div>
+</body>
+</html>

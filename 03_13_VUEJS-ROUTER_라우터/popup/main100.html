@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콤퍼넌트_전역콤퍼넌트_템플릿</title>
+    
+    <!-- 오픈소스  -->
+    <script src="./js/lib/jquery.min.js"></script>    
+    <script src="./vue/lib/vue.js"></script>
+
+<style>
+    #app {
+        text-align: center;
+    }
+
+</style>
+
+</head>
+<body>
+<div id="wrap">
+
+   <div id="food">
+        <h2>지역 콤포넌트 객체 배열 데이터 PROPS 이용한 통신</h2>
+        
+        <ol>
+            <data-comp v-for='item in foodData' v-bind:propsdata='item'></data-comp>
+        </ol>
+
+   </div>
+
+   <script>
+
+    var dataComp = {
+        props:['propsdata'],
+        template:'<li> 음식코드 : {{ propsdata.id }}, &nbsp;&nbsp;&nbsp; 음식이름 : {{ propsdata.name }}   </li>'
+    }
+
+    var food = new Vue({
+        el:'#food',
+        data:{
+            foodData:[
+                {id:'P00',name:'피자'},
+                {id:'G00',name:'고추잡채'},
+                {id:'B00',name:'부대찌게'},
+                {id:'M00',name:'마녀김밥'},
+                {id:'T00',name:'떡라면'}
+            ]
+        },
+        components:{
+            'data-comp':dataComp
+        }
+    });
+
+   </script>
+
+
+
+</div>
+</body>
+</html>
